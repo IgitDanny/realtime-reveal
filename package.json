@@ -1,0 +1,9 @@
+{
+    "name": "present.io",
+    "version": "0.0.1",
+    "dependencies": {
+        "express": "3.0.6",
+        "hbs": "2.0.1",
+        "socket.io": "0.9.13"
+    }
+}
