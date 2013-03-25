@@ -7,7 +7,8 @@ window.onload = function () {
         socket.emit('login', $('#user').val(), $('#password').val(), function (logged_in) {
             if (logged_in) {
                 $('#login-form').remove();
-                $('form').show();
+                $('.contains-presentation-controls').show();
+                window.location.hash = 'slide-0';
             } else {
                 alert ('Try harder');
             }
@@ -21,14 +22,23 @@ window.onload = function () {
     next.onclick = function () {
         socket.emit('next slide');
         return false;
-    }
+    };
 
     previous.onclick = function () {
         socket.emit('previous slide');
         return false;
-    }
+    };
 
     socket.on('change slide', function (slide) {
-        window.location.hash = slide;
+        $('.presentation-controls button').show();
+        if (slide < 1) {
+            // First slide
+            slide = 0;
+            $('#previous').hide();
+        } else if (slide >= (num_slides - 1)) {
+            // Last slide
+            $('#next').hide();
+        }
+        window.location.hash = 'slide-' + slide;
     });
-}
+};

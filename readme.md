@@ -1,3 +1,3 @@
-# Reveal Sockets
+# Realtime Reveal.js
 
-Witty name is due at some point
+Too lazy to write a description just now...

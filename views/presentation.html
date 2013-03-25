@@ -4,19 +4,23 @@
     <meta charset="UTF-8">
     <title>Presentation</title>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="/jquery/jquery.min.js"></script>
     <script src="/presentation.js"></script>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <link rel="stylesheet" href="/reveal/css/reveal.min.css">
-    <link rel="stylesheet" href="/reveal/css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="/reveal.js/css/theme/default.css" id="theme">
+
+    <!-- For extra features such as graphs and comments -->
+    <link rel="stylesheet" href="/css/presentation-extras.css">
 
     <!-- For syntax highlighting -->
-    <link rel="stylesheet" href="/lib/css/zenburn.css">
+    <link rel="stylesheet" href="/reveal.js/lib/css/zenburn.css">
 
     <!-- If the query includes 'print-pdf', use the PDF print sheet -->
     <script>
-        document.write( '<link rel="stylesheet" href="/reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        document.write( '<link rel="stylesheet" href="/reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
     </script>
 
     <!--[if lt IE 9]>
@@ -29,35 +33,305 @@
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
 
-            <section>
+            <section title="Realtime Reveal.js">
                 <h1>Hello</h1>
-                <h3>Reveal.js powered slides with Socket.io powered second screen app</h3>
-                <p>
-                    <small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-                </p>
+                <h3>Visit p.grant-richmond.com to join in</h3>
+                <h4>Who's here?</h4>
+                <div class="twitter-users" id="twitter-users-start"></div>
+                <ul class="twitter-users-container" id="twitter-users-start-container">
+                </ul>
+                <div class="speaker-notes">
+                    <p>Intro Screen</p>
+                    <p>Gifs where I couldn't think of anything</p>
+                </div>
+                <div class="second-screen">
+                    <p>Hello an welcome to the second screen view for the presentation.</p>
+                    <p>Keep an eye on this as it will update whenever the slide changes.</p>
+                    <p>Enter you twitter username below to send it out to everyone else who is connected.</p>
+                    <p>P.S. wherever I had no content I have put animated gifs. Enjoy.</p>
+                </div>
             </section>
 
-            <section>
-                <h1>Slide2</h1>
+            <section title="Who Am I?">
+                <h1>Who Am I?</h1>
+                <h3>I'm Grant</h3>
+                <ul>
+                    <li>Former Student</li>
+                    <li>Web Developer @ Hit Reach</li>
+                    <li>Gif Enthusiast</li>
+                </ul>
+                <div class="twitter-users" id="twitter-users-start"></div>
+                <ul class="twitter-users-container" id="twitter-users-start-container">
+                </ul>
+                <div class="speaker-notes">
+                    <p>Uni, work, contact</p>
+                </div>
+                <div class="second-screen">
+                    <p>Abertay graduate from Web Design and Development</p>
+                    <p>I work as a web developer for <a href="http://www.hitreach.co.uk/" target="_blank">Hit Reach</a></p>
+                    <p><a href="http://twitter.com/gfrichmond/" target="_blank">@gfrichmond</a> - <a href="http://www.grant-richmond.com/" target="_blank">www.grant-richmond.com</a></p>
+                </div>
             </section>
 
-            <section>
-                <h1>I sure do love slides. They're purdy.</h1>
+            <section title="What it does">
+                <h1>What it does</h1>
+                <ul>
+                    <li>3 views:
+                        <ol>
+                            <li>Presentation (what you're seeing here)</li>
+                            <li>Second Screen (on your own device)</li>
+                            <li>Admin Section (what I'm seeing on my device)</li>
+                        </ol>
+                    </li>
+                    <li>All are synced in real time</li>
+                    <li>Allows for audience interaction</li>
+                </ul>
+                <div class="speaker-notes">
+                    <p>Presentation, Second Screen and Admin</p>
+                    <p></p>
+                </div>
+                <div class="second-screen">
+                    <p>The 3 views are all linked. Kind of like this:</p>
+                    <img src="http://i.imgur.com/rDGrP.gif">
+                </div>
             </section>
 
-            <section>
-                <h1>Reveal.js</h1>
-                <h3>HTML Presentations Made Easy</h3>
-                <p>
-                    <small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-                </p>
+            <section title="The Techy Stuff">
+                <h1>The Techy Stuff</h1>
+                <ul>
+                    <li>Slideshow powered by reveal.js</li>
+                    <li>Uses node.js and websockets for control</li>
+                    <li>All data is pulled from a single html file</li>
+                </ul>
+                <div class="speaker-notes">
+                    <p>Pretty slides not my work (thats the hard bit)</p>
+                    <p>I made the node.js backend and included some fun interactive stuff</p>
+                </div>
+                <div class="second-screen">
+                    <h3>JavaScript, JavaScript, JavaScript</h3>
+                    <p>Below is a bunch of links to all the stuff that I've used to build this if you're interested.</p>
+                    <hr>
+                    <p><a href="http://lab.hakim.se/reveal-js/#/" target="_blank">reveal.js</a> powers the presentation view</p>
+                    <p><a href="http://nodejs.org/" target="_blank">Node.js</a></p>
+                    <p>I say websockets but it actually uses <a href="http://socket.io/" target="_blank">Socket.IO</a> to make life easier</p>
+                    <p><a href="http://handlebarsjs.com/" target="_blank">Handlebars</a> for simple templating</p>
+                    <p>&hellip; and of course <a href="http://jquery.com/" target="_blank">jQuery</a></p>
+                </div>
+            </section>
+
+            <section title="The Controller File">
+                <h2>The Controller File</h2>
+                <p>Simple html file with classes for second screen and speaker views</p>
+                <p>Check the second screen view for the code for this slide</p>
+                <div class="second-screen">
+                    <p>The source code for this slide:</p>
+                    <pre>
+&lt;section title="The Controller File"&gt;
+    &lt;h2&gt;The Controller File&lt;/h2&gt;
+    &lt;p&gt;Simple html file with classes for second screen and speaker views&lt;/p&gt;
+    &lt;p&gt;Check the second screen view for the code for this slide&lt;/p&gt;
+    &lt;div class="second-screen"&gt;
+        &lt;p&gt;The source code for this slide:&lt;/p&gt;
+        &lt;pre&gt;
+            &lt;!-- I have ommited the code here to prevent some sort of inception --&gt;
+        &lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;div class="speaker-notes"&gt;
+        &lt;p&gt;This note only appears on the speakers device&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+                    </pre>
+                </div>
+                <div class="speaker-notes">
+                    <p>This note only appears on the speakers device</p>
+                </div>
+            </section>
+
+            <section title="Fun Stuff">
+                <h1>Fun stuff</h1>
+                <p>Has many advantages over traditional presentation tools.</p>
+                <div class="speaker-notes">
+                    <p></p>
+                    <p></p>
+                </div>
+                <div class="second-screen">
+                    <img src="http://gifrific.com/wp-content/uploads/2012/08/Kangaroo-Drops-Ball.gif">
+                    <p>As you are about to see here</p>
+                </div>
+            </section>
+
+            <section title="Extra Information">
+                <h2>Extra Information</h2>
+                <p>The second screen app allows you to show for more information than would be possible on a slide</p>
+                <div class="speaker-notes">
+                    <p>Such as long paragraphs</p>
+                </div>
+                <div class="second-screen">
+                    <p>So here I could write a big lengthy paragraph that would be totally un-readable on a slide but is easy to read when it's right in front of you</p>
+                </div>
+            </section>
+
+            <section title="Richer Information">
+                <h2>Richer Information</h2>
+                <p>It's all a web page so you can put almost anything on either view</p>
+                <iframe width="420" height="315" src="http://www.youtube.com/embed/a1Y73sPHKxw?html5=1" frameborder="0" allowfullscreen></iframe>
+                <div class="speaker-notes">
+                    <p>Second Screen shows map, video and code</p>
+                    <p>I control what you see on your phone so it's also good for trolling</p>
+                </div>
+                <div class="second-screen">
+                    <p>Since this is just a web page it can include:</p>
+                    <h3>Maps</h3>
+                    <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=dundee+university&amp;aq=&amp;sll=56.483199,-2.97603&amp;sspn=0.439059,1.352692&amp;t=m&amp;ie=UTF8&amp;hq=dundee+university&amp;ll=56.458098,-2.98232&amp;spn=0.006295,0.011817&amp;output=embed"></iframe>
+                    <h3>Videos</h3>
+                    <iframe width="420" height="315" src="http://www.youtube.com/embed/a1Y73sPHKxw?html5=1" frameborder="0" allowfullscreen></iframe>
+                    <h3>Code</h3>
+                    <pre>
+&lt;?php echo 'Hello Dundee Tech Meetup'; ?&gt;
+                    </pre>
+                    <h3>Etc.</h3>
+                </div>
+            </section>
+
+            <section title="Trolling">
+                <h2>Trolling</h2>
+                <p>I have contol over what you see</p>
+                <div class="speaker-notes">
+                    <p>Second Screen shows map, video and code</p>
+                    <p>I control what you see on your phone so it's also good for trolling</p>
+                </div>
+                <div class="second-screen">
+                    <img src="http://images.wikia.com/uncyclopedia/images/0/03/Rickroll%27d.gif" style="width: 100%;">
+                </div>
+            </section>
+
+            <section title="Voting">
+                <h2>Voting</h2>
+                <p>Simple real time voting</p>
+                <p>Do you like voting on things?</p>
+                <div class="poll graph horizontal-bar-graph" data-max="30">
+                    <div title="Yes" class="bar" id="bar-yes"></div>
+                    <div title="No" class="bar" id="bar-no"></div>
+                </div>
+                <div class="speaker-notes">
+                    <p>Already saw the twitter thing</p>
+                </div>
+                <div class="second-screen">
+                    <p>Press the buttons below to vote. (Can vote as many times as you want)</p>
+                    <p>Do you like voting on things?</p>
+                </div>
+            </section>
+
+             <section title="Serious Voting">
+                <p>Voting can also be used for more serious matters</p>
+                <p>Who would win in a fight?</p>
+                <div class="poll graph horizontal-bar-graph" data-max="30">
+                    <div title="A shark with a machine gun" class="bar" id="bar-shark"></div>
+                    <div title="A bear with a flamethrower" class="bar" id="bar-bear"></div>
+                    <div title="A wizard cat" class="bar" id="bar-lion"></div>
+                    <div title="A velociraptor that can open doors" class="bar" id="bar-velo"></div>
+                    <div title="A gorilla in armour" class="bar" id="bar-gorilla"></div>
+                </div>
+                <div class="speaker-notes">
+                    <p>Can be used for more serious matters</p>
+                </div>
+                <div class="second-screen">
+                    <p>A. <br><img src="http://the17thman.typepad.com/.a/6a00d8341c6c5753ef0168ea837073970c-500wi"></p>
+                    <p>B. <br><img src="http://i.imgur.com/Y5t2H.jpg"></p>
+                    <p>C. <br><img src="http://24.media.tumblr.com/tumblr_lf5mria6D31qgsvaco1_400.jpg"></p>
+                    <p>D. <br><img src="http://4.bp.blogspot.com/_OIVfwW0x6ZQ/S8vlUetRT_I/AAAAAAAAKq4/3HowUcBugy4/s1600/velociraptor.jpg"></p>
+                    <p>E. <br><img src="http://hellacast.com/wp-content/gallery/episode-7/14gorilla-armor.jpg"></p>
+                    <p>Who would win in a fight?</p>
+                </div>
+            </section>
+
+            <section title="Messages">
+                <h2>Messages</h2>
+                <p>Can send messages to the slide</p>
+                <div class="comment-box" id="comment-box-1"></div>
+
+                <div class="speaker-notes">
+                    <p></p>
+                </div>
+                <div class="second-screen">
+                    <p>Enter your message to see it on the slide</p>
+                </div>
+            </section>
+
+            <section title="To Do">
+                <h1>To Do</h1>
+                <ul>
+                    <li>Tidy Code</li>
+                    <li>Make a service</li>
+                    <li>Save all data</li>
+                    <li>Improve controls</li>
+                    <li>More Graphs</li>
+                    <li>Make Pretty</li>
+                </ul>
+
+                <div class="speaker-notes">
+                    <p>My code is a mess - hackers will not like plain text passwords</p>
+                    <p>Only just started learning node and threw this together mostly last week</p>
+                    <p>Make a service - at the moment only works for one slideshow. Want people to be able to upload their own and get link / username and password - will need database</p>
+                    <p>Any votes / messages are temporary, they disappear when you quit</p>
+                    <p>Up and down slides, add items one at a time, automatically load at the right slide when connecting, allow user to go through all slides / second screen after the presentation is finished</p>
+                    <p>Reveal has lots of nice themes. The second screen app does not.</p>
+                </div>
+                <div class="second-screen">
+                    <img src="http://www.templeofdogs.org/wp-content/gallery/gifs-used/puppy-biting-fingers.gif">
+                </div>
+            </section>
+
+            <section title="Possibilities">
+                <h1>Possibilities</h1>
+                <p>This could do a lot more</p>
+                <ul>
+                    <li>Device analytics</li>
+                    <li>Pick a random audience member</li>
+                </ul>
+                <div class="comment-box" id="comment-box-2"></div>
+
+                <div class="speaker-notes">
+                    <p>Just some ideas I have come up with</p>
+                </div>
+                <div class="second-screen">
+                    <p>Do you have any suggestions on what could be done?</p>
+                </div>
+            </section>
+
+            <section title="I have no idea what I'm doing">
+                <h1>I have no idea what I'm doing</h1>
+                <p>So help me out.</p>
+
+                <div class="speaker-notes">
+                    <p>My javascript is not good</p>
+                    <p>So yours doesn't need to be either</p>
+                </div>
+                <div class="second-screen">
+                    <img src="http://i.imgur.com/xVyoSl.jpg">
+                </div>
+            </section>
+
+            <section title="Get Involved">
+                <h1>Get Involved</h1>
+
+                 <div class="speaker-notes">
+                    <p>want this to be more that just me</p>
+                    <p></p>
+                </div>
+                <div class="second-screen">
+                   <p>Come talk to me.</p>
+                   <p><a href="" target="_blank">Get stuck in on github</a></p>
+                   <p>Get me on twitter <a href="http://www.twitter.com/gfrichmond">@gfrichmond</a></p>
+                   <p>Email me: <a href="mailto:grant@grant-richmond.com" target="_blank">grant@grant-richmond.com</a></p>
+                </div>
             </section>
 
         </div>
 
     </div>
-    <script src="/reveal/lib/js/head.min.js"></script>
-    <script src="/reveal/js/reveal.js"></script>
+    <script src="/reveal.js/lib/js/head.min.js"></script>
+    <script src="/reveal.js/js/reveal.js"></script>
 
     <script>
 
@@ -74,12 +348,12 @@
 
             // Optional libraries used to extend on reveal.js
             dependencies: [
-                { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-                { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-                { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                { src: '/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: '/reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: '/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: '/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: '/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                { src: '/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
                 // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
             ]
         });

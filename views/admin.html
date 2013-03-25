@@ -3,19 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/jquery/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var num_slides = {{num_slides}};
+    </script>
     <script src="/admin.js"></script>
 </head>
 <body>
-        <form style="display: none;" action="">
-            <button id="previous">Previous</button>
+    <div class="contains-presentation-controls" style="display: none">
+        {{#each slides}}
+            <div class="note" id="slide-{{@index}}">
+                {{#if title}}
+                    <h1>{{../title}}</h1>
+                {{else}}
+                    <h1>Slide {{@index}}</h1>
+                {{/if}}
+                {{{notes}}}
+            </div>
+        {{/each}}
+        <div class="presentation-controls">
+            <button style="display: none;" id="previous">Previous</button>
             <button id="next">Next</button>
-        </form>
-        <form id="login-form" action="" method="post">
-            <input type="text" placeholder="Username" name="user" id="user" required>
-            <input type="password" placeholder="Password" name="password" id="password" required>
-            <button>Login</button>
-        </form>
+        </div>
+    </div>
+    <form id="login-form" action="" method="post">
+        <input type="text" placeholder="Username" name="user" id="user" required>
+        <input type="password" placeholder="Password" name="password" id="password" required>
+        <button>Login</button>
+    </form>
 </body>
 </html>

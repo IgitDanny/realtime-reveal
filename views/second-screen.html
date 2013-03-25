@@ -3,48 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Presentation</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/css/style.css">
     <script src="/socket.io/socket.io.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="/jquery/jquery.min.js"></script>
     <script src="/second-screen.js"></script>
-    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <section class="slide" id="welcome">
-        <h1>Welcome to the slideshow second screen app</h1>
-        <p>this will let you follow along with the slides</p>
-    </section>
-
-    <section class="slide" id="slide1">
-        <h1>Info for slide 1</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos expedita distinctio ullam culpa aliquam tempora harum temporibus maiores sapiente obcaecati dignissimos ratione iusto nulla nesciunt in suscipit necessitatibus accusamus optio. Atque quos totam commodi impedit provident sed earum inventore recusandae sit hic expedita nulla nisi repellendus iure aspernatur veniam maiores!</p>
-    </section>
-    <section class="slide" id="slide2">
-        <h1>Info for slide 2</h1>
-        <p>Alias vel porro qui suscipit enim distinctio consequuntur nam quibusdam repellendus natus molestias repellat quisquam rerum mollitia nihil debitis tempore sequi dolore dolores beatae consectetur non omnis optio velit voluptatem neque sapiente adipisci tenetur dolorum eius expedita amet obcaecati ab a repudiandae architecto officiis culpa et cumque ducimus corporis delectus?</p>
-    </section>
-    <section class="slide" id="slide3">
-        <h1>Info for slide 3</h1>
-        <p>Sed ut maiores explicabo possimus asperiores architecto repudiandae culpa laudantium maxime commodi illum recusandae minus nisi sapiente suscipit! Recusandae quis explicabo temporibus iusto magnam repellat rerum at consectetur quos ipsa magni nobis voluptatem eveniet soluta corporis illo dicta? Hic explicabo libero nulla eveniet quo labore vel neque est soluta sequi!</p>
-    </section>
-    <section class="slide" id="slide4">
-        <h1>Info for slide 4</h1>
-        <p>Nemo nisi repellat officia neque exercitationem reprehenderit perspiciatis illo mollitia porro laboriosam dolores eius doloremque aliquid rem repellendus maiores omnis id quam officiis tenetur esse tempora consequuntur at! Officiis quos vitae provident unde fugiat ipsa doloremque excepturi dicta corrupti laudantium itaque sit quae consequuntur magnam odit nisi consequatur sequi voluptatibus.</p>
-    </section>
-    <section class="slide" id="slide5">
-        <h1>Info for slide 5</h1>
-        <p>Sapiente nam sunt debitis ullam asperiores corrupti architecto repellendus est eius soluta? Libero cumque tenetur facere veniam doloremque quo maiores impedit fugiat culpa nihil recusandae perferendis perspiciatis eius repudiandae inventore nostrum error vel iusto excepturi consequuntur aliquam! Quo necessitatibus illum laborum odit est quibusdam molestias quaerat qui eveniet voluptate voluptas.</p>
-    </section>
-    <section class="slide" id="slide6">
-        <h1>Info for slide 6</h1>
-        <p>Eveniet quas similique ipsam laudantium fuga maxime fugit excepturi saepe fugiat quisquam quia corporis nesciunt praesentium perspiciatis quo aspernatur dolorem possimus consectetur cumque quidem ipsa et sint blanditiis ducimus nobis officia error nam. Maxime in ad hic earum repudiandae odio est perspiciatis voluptatibus nulla architecto mollitia expedita sapiente porro laudantium.</p>
-    </section>
-    <section class="slide" id="slide7">
-        <h1>Info for slide 7</h1>
-        <p>Aperiam cum explicabo esse expedita id accusamus tempora deserunt deleniti atque animi dolorum aliquid nihil necessitatibus itaque quis architecto fuga rerum quas repellendus soluta facilis voluptatum odit optio eaque minus aspernatur quibusdam. Modi amet similique eos fugit accusantium repudiandae repellat vitae architecto ab alias voluptate aspernatur maiores ratione reiciendis vel?</p>
-    </section>
-    <section class="slide" id="slide8">
-        <h1>Info for slide 8</h1>
-        <p>At necessitatibus nesciunt soluta repellendus quibusdam asperiores veniam ipsum sequi! Doloremque possimus quae maxime aspernatur distinctio! Ullam sed dicta a quod voluptatum excepturi ab alias repellat nam quam suscipit tempore maxime velit! Vero quasi reiciendis recusandae velit error commodi quos iusto minima aliquam praesentium maxime optio molestiae eveniet adipisci veritatis.</p>
-    </section>
+    {{#each slides}}
+        <section class="slide" id="slide-{{@index}}">
+            {{#if title}}
+                <h1>{{../title}}</h1>
+            {{/if}}
+            {{{second_screen}}}
+            {{#if comment_box}}
+                {{#each comment_box}}
+                    <form class="comment-form" id="{{this}}">
+                        <input type="text">
+                        <button type="submit">Send</button>
+                    </form>
+                {{/each}}
+            {{/if}}
+            {{#if twitter_users}}
+                <ul class="twitter-users" id="{{twitter_users}}-container"></ul>
+                <form class="twitter-user-form" id="{{twitter_users}}">
+                    <input type="text" placeholder="twitter username">
+                    <button type="submit">Send</button>
+                </form>
+            {{/if}}
+            {{#if poll}}
+            {{#each poll}}
+                {{#each bars}}
+                <button class="cast-vote" id="{{id}}">{{title}}</button>
+                {{/each}}
+            {{/each}}
+            {{/if}}
+        </section>
+    {{/each}}
 </body>
 </html>

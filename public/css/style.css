@@ -1,0 +1,131 @@
+*, *:after, *:before {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    padding: .5em;
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f6f6f6;
+    color: #333;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+input, select, textarea, button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    font-size: 1.5em;
+    padding: 0.4em;
+    color: #999;
+}
+input:hover, select:hover, textarea:hover {
+    border-color: #999;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #999;
+    color: #222;
+}
+
+button {
+    background-color: blue;
+    color: white;
+}
+
+/* Second Screen */
+
+.slide {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.5em;
+    -webkit-transition: all .5s;
+       -moz-transition: all .5s;
+        -ms-transition: all .5s;
+         -o-transition: all .5s;
+            transition: all .5s;
+}
+
+.slide:target {
+    opacity: 1;
+    z-index: 999;
+}
+
+.notification {
+    position: fixed;
+    top: .5em;
+    width: 90%;
+    left: 5%;
+    display: block;
+    line-height: 1.2em;
+    padding: .4em 1em;
+    font-size: 1em;
+    text-decoration: none;
+    -webkit-border-radius: 1em;
+            border-radius: 1em;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    color: #222;
+    background-color: yellow;
+    border: 1px solid rgba(255,255,255,.6);
+    -webkit-box-shadow: 0 0 .2em rgba(0,0,0,.4);
+            box-shadow: 0 0 .2em rgba(0,0,0,.4);
+}
+
+.twitter-users, .twitter-users li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.twitter-users a {
+    display: block;
+    text-decoration: none;
+    font-size: 1.3em;
+    padding: .3em 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Admin Area */
+
+.note {
+    border: 1px solid #ccc;
+    -webkit-border-radius: 2px;
+            border-radius: 2px;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    overflow: hidden;
+}
+
+.note:target {
+    border-color: blue;
+}
+
+.contains-presentation-controls {
+    padding-bottom: 3em;
+}
+
+.presentation-controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.2em;
+    background-color: #ddd;
+    border-top: 1px solid #333;
+}
+
+.presentation-controls button {
+    font-size: 1em;
+}
